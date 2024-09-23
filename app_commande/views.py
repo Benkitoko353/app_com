@@ -190,10 +190,10 @@ class CategorieDetails(APIView):
 
     def post(self,request):
           
-        serializer = CategorieSerialiser(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data,status = status.HTTP_201_CREATED)
+        serializers = CategorieSerialiser(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data,status = status.HTTP_201_CREATED)
 
 
 
