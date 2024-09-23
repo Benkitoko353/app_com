@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Modification du produit {{p.libelle}}</h4>
+
+        <form class="forms-sample"method ="post" action="{% url 'updateProduit' p.code %}"> 
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName1">CODE</label>
+            <input type="text" class="form-control" disabled id="code"name="saisir code" value="{{p.code}}" placeholder="saisir code">
+          
+          <div class="form-group">
+            <label for="exampleSelectGender"><br>LIBELLE</label>
+            <input type="text" class="form-control" id="libelle"name="libelle" value="{{p.libelle}}" placeholder="saisir libelle">
+            </div>
+          <button type="submit" class="btn btn-primary mr-2">Enregistrer les modifications</button>
+          <br>
+          <br>{{message}}
+        </form>
+        <a class="btn btn-dark"href="{% url 'produit'%}">Retour</a>
+        </div>
+    </div>
+  </div>
+
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Ajouter Un Nouveaux Produit</h4>
+
+        <form class="forms-sample"method ="post" action="{% url 'addProduit' %}"> 
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="exampleInputName1">CODE</label>
+            <input type="text" class="form-control" id="code"name="code" placeholder="saisir code">
+          
+          <div class="form-group">
+            <label for="exampleSelectGender"><br>LIBELLE</label>
+            <input type="text" class="form-control" id="libelle"name="libelle" placeholder="saisir libelle">
+            </div>
+            <div class="form-group">
+                <label for="exampleSelectGender"><br>QUANTITE</label>
+                <input type="text" class="form-control" id="qte"name="qte" placeholder="saisir quantite">
+                </div>
+                <div class="form-group">
+                    <label for="exampleSelectGender"><br>PRIX UNITAIRE</label>
+                    <input type="text" class="form-control" id="pu"name="pu" placeholder="saisir libelle">
+                </div>
+
+                <div class="form-group">
+                    <label>CATEGORIE</label>
+                    <select type="text" class="form-control" style="width:100%" name="categorie">
+                        {% for c in cats %}
+                      <option value="{{c.code}}">{{c.libelle}}</option>
+                        {% endfor %}
+                    </select>
+                  </div>
+
+          <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+          <br>
+          <br>{{message}}
+        </form>
+        <a class="btn btn-dark"href="{% url 'produit' %}">Retour</a>
+        </div>
+    </div>
+  </div>
+
+{% endblock content %}
